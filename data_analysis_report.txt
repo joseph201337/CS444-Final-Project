@@ -1,0 +1,248 @@
+
+================================================================================
+DATASET OVERVIEW
+================================================================================
+
+Shape: 145460 rows × 23 columns
+Memory Usage: 76.41 MB
+
+Column Types:
+float64    16
+object      7
+Name: count, dtype: int64
+
+Date Range:
+  Start: 2007-11-01 00:00:00
+  End: 2017-06-25 00:00:00
+  Duration: 3524 days
+================================================================================
+MISSING VALUES ANALYSIS
+================================================================================
+
+Total Rows: 145460
+Columns with Missing Values: 21/23
+
+       Column  Missing_Count  Missing_Percent Data_Type
+     Sunshine          69835            48.01   float64
+  Evaporation          62790            43.17   float64
+     Cloud3pm          59358            40.81   float64
+     Cloud9am          55888            38.42   float64
+  Pressure9am          15065            10.36   float64
+  Pressure3pm          15028            10.33   float64
+   WindDir9am          10566             7.26    object
+  WindGustDir          10326             7.10    object
+WindGustSpeed          10263             7.06   float64
+  Humidity3pm           4507             3.10   float64
+   WindDir3pm           4228             2.91    object
+      Temp3pm           3609             2.48   float64
+ RainTomorrow           3267             2.25    object
+     Rainfall           3261             2.24   float64
+    RainToday           3261             2.24    object
+ WindSpeed3pm           3062             2.11   float64
+  Humidity9am           2654             1.82   float64
+      Temp9am           1767             1.21   float64
+ WindSpeed9am           1767             1.21   float64
+      MinTemp           1485             1.02   float64
+      MaxTemp           1261             0.87   float64
+
+================================================================================
+NUMERICAL COLUMNS STATISTICS
+================================================================================
+
+       Column    Mean  Median   Std   Min    Max    Q25    Q75
+      MinTemp   12.19    12.0  6.40  -8.5   33.9    7.6   16.9
+      MaxTemp   23.22    22.6  7.12  -4.8   48.1   17.9   28.2
+     Rainfall    2.36     0.0  8.48   0.0  371.0    0.0    0.8
+  Evaporation    5.47     4.8  4.19   0.0  145.0    2.6    7.4
+     Sunshine    7.61     8.4  3.79   0.0   14.5    4.8   10.6
+WindGustSpeed   40.04    39.0 13.61   6.0  135.0   31.0   48.0
+ WindSpeed9am   14.04    13.0  8.92   0.0  130.0    7.0   19.0
+ WindSpeed3pm   18.66    19.0  8.81   0.0   87.0   13.0   24.0
+  Humidity9am   68.88    70.0 19.03   0.0  100.0   57.0   83.0
+  Humidity3pm   51.54    52.0 20.80   0.0  100.0   37.0   66.0
+  Pressure9am 1017.65  1017.6  7.11 980.5 1041.0 1012.9 1022.4
+  Pressure3pm 1015.26  1015.2  7.04 977.1 1039.6 1010.4 1020.0
+     Cloud9am    4.45     5.0  2.89   0.0    9.0    1.0    7.0
+     Cloud3pm    4.51     5.0  2.72   0.0    9.0    2.0    7.0
+      Temp9am   16.99    16.7  6.49  -7.2   40.2   12.3   21.6
+      Temp3pm   21.68    21.1  6.94  -5.4   46.7   16.6   26.4
+
+================================================================================
+CATEGORICAL COLUMNS ANALYSIS
+================================================================================
+
+--- Location ---
+Unique Values: 49
+Missing Values: 0 (0.00%)
+
+Top 10 Values:
+  Canberra: 3436 (2.36%)
+  Sydney: 3344 (2.30%)
+  Darwin: 3193 (2.20%)
+  Melbourne: 3193 (2.20%)
+  Brisbane: 3193 (2.20%)
+  Adelaide: 3193 (2.20%)
+  Perth: 3193 (2.20%)
+  Hobart: 3193 (2.20%)
+  Albany: 3040 (2.09%)
+  MountGambier: 3040 (2.09%)
+
+--- WindGustDir ---
+Unique Values: 16
+Missing Values: 10326 (7.10%)
+
+Value Distribution:
+  W: 9915 (6.82%)
+  SE: 9418 (6.47%)
+  N: 9313 (6.40%)
+  SSE: 9216 (6.34%)
+  E: 9181 (6.31%)
+  S: 9168 (6.30%)
+  WSW: 9069 (6.23%)
+  SW: 8967 (6.16%)
+  SSW: 8736 (6.01%)
+  WNW: 8252 (5.67%)
+
+--- WindDir9am ---
+Unique Values: 16
+Missing Values: 10566 (7.26%)
+
+Value Distribution:
+  N: 11758 (8.08%)
+  SE: 9287 (6.38%)
+  E: 9176 (6.31%)
+  SSE: 9112 (6.26%)
+  NW: 8749 (6.01%)
+  S: 8659 (5.95%)
+  W: 8459 (5.82%)
+  SW: 8423 (5.79%)
+  NNE: 8129 (5.59%)
+  NNW: 7980 (5.49%)
+
+--- WindDir3pm ---
+Unique Values: 16
+Missing Values: 4228 (2.91%)
+
+Value Distribution:
+  SE: 10838 (7.45%)
+  W: 10110 (6.95%)
+  S: 9926 (6.82%)
+  WSW: 9518 (6.54%)
+  SSE: 9399 (6.46%)
+  SW: 9354 (6.43%)
+  N: 8890 (6.11%)
+  WNW: 8874 (6.10%)
+  NW: 8610 (5.92%)
+  ESE: 8505 (5.85%)
+
+--- RainToday ---
+Unique Values: 2
+Missing Values: 3261 (2.24%)
+
+Value Distribution:
+  No: 110319 (75.84%)
+  Yes: 31880 (21.92%)
+
+--- RainTomorrow ---
+Unique Values: 2
+Missing Values: 3267 (2.25%)
+
+Value Distribution:
+  No: 110316 (75.84%)
+  Yes: 31877 (21.91%)
+
+================================================================================
+TARGET VARIABLE ANALYSIS: RainTomorrow
+================================================================================
+
+Class Distribution:
+  No: 110316 (75.84%)
+  Yes: 31877 (21.91%)
+
+Class Imbalance Ratio: 3.46:1
+
+================================================================================
+LOCATION DISTRIBUTION ANALYSIS
+================================================================================
+
+Total Locations: 49
+
+Samples per Location:
+Location
+Canberra            3436
+Sydney              3344
+Darwin              3193
+Melbourne           3193
+Brisbane            3193
+Adelaide            3193
+Perth               3193
+Hobart              3193
+Albany              3040
+MountGambier        3040
+Ballarat            3040
+Townsville          3040
+GoldCoast           3040
+Cairns              3040
+Launceston          3040
+AliceSprings        3040
+Bendigo             3040
+Albury              3040
+MountGinini         3040
+Wollongong          3040
+Newcastle           3039
+Tuggeranong         3039
+Penrith             3039
+Woomera             3009
+Nuriootpa           3009
+Cobar               3009
+CoffsHarbour        3009
+Moree               3009
+Sale                3009
+PerthAirport        3009
+PearceRAAF          3009
+Witchcliffe         3009
+BadgerysCreek       3009
+Mildura             3009
+NorfolkIsland       3009
+MelbourneAirport    3009
+Richmond            3009
+SydneyAirport       3009
+WaggaWagga          3009
+Williamtown         3009
+Dartmoor            3009
+Watsonia            3009
+Portland            3009
+Walpole             3006
+NorahHead           3004
+SalmonGums          3001
+Katherine           1578
+Nhil                1578
+Uluru               1578
+
+Location Statistics:
+  Min samples: 1578 (Katherine)
+  Max samples: 3436 (Canberra)
+  Mean samples: 2968.57
+  Median samples: 3009.00
+
+================================================================================
+MISSING DATA PATTERNS
+================================================================================
+
+Rows with no missing values: 56420 (38.79%)
+Rows with 1-5 missing values: 71853
+Rows with 6-10 missing values: 14398
+Rows with >10 missing values: 2789
+
+
+Correlation between missing values (top pairs):
+  Rainfall <-> RainToday: 1.000
+  WindGustDir <-> WindGustSpeed: 0.997
+  Pressure9am <-> Pressure3pm: 0.982
+  Humidity3pm <-> Temp3pm: 0.892
+  WindDir3pm <-> WindSpeed3pm: 0.848
+  Cloud9am <-> Cloud3pm: 0.832
+  Humidity9am <-> Temp9am: 0.813
+  Evaporation <-> Sunshine: 0.789
+  MinTemp <-> Temp9am: 0.722
+  WindSpeed3pm <-> Temp3pm: 0.669
