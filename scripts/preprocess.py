@@ -94,7 +94,6 @@ def create_sequences_fixed(df, seq_length=14, train_ratio=0.8, features_to_use=N
     # Identify feature columns
     feature_cols = [f for f in features_to_use if f in df.columns]
     
-    # Shuffle within each location to avoid temporal bias
     train_dfs = []
     test_dfs = []
     

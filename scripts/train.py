@@ -135,20 +135,20 @@ def train_and_evaluate_all_models(region_name=None, region_filter=None):
     torch.save(ann.state_dict(), f"{'global' if not region_name else region_name.lower()}_ann.pth")
     
     # Train LSTM
-    print("\n" + "="*70)
-    lstm = RainLSTM(input_dim)
-    lstm, lstm_time, lstm_acc, lstm_f1, lstm_auc = train_model(lstm, train_dl, test_dl, 
-                                   f"{'Global' if not region_name else region_name}_LSTM")
-    results.append(["LSTM", lstm_acc, lstm_f1, lstm_auc, lstm_time])
-    torch.save(lstm.state_dict(), f"{'global' if not region_name else region_name.lower()}_lstm.pth")
+    # print("\n" + "="*70)
+    # lstm = RainLSTM(input_dim)
+    # lstm, lstm_time, lstm_acc, lstm_f1, lstm_auc = train_model(lstm, train_dl, test_dl, 
+    #                                f"{'Global' if not region_name else region_name}_LSTM")
+    # results.append(["LSTM", lstm_acc, lstm_f1, lstm_auc, lstm_time])
+    # torch.save(lstm.state_dict(), f"{'global' if not region_name else region_name.lower()}_lstm.pth")
     
-    # Train GRU
-    print("\n" + "="*70)
-    gru = RainGRU(input_dim)
-    gru, gru_time, gru_acc, gru_f1, gru_auc = train_model(gru, train_dl, test_dl, 
-                                 f"{'Global' if not region_name else region_name}_GRU")
-    results.append(["GRU", gru_acc, gru_f1, gru_auc, gru_time])
-    torch.save(gru.state_dict(), f"{'global' if not region_name else region_name.lower()}_gru.pth")
+    # # Train GRU
+    # print("\n" + "="*70)
+    # gru = RainGRU(input_dim)
+    # gru, gru_time, gru_acc, gru_f1, gru_auc = train_model(gru, train_dl, test_dl, 
+    #                              f"{'Global' if not region_name else region_name}_GRU")
+    # results.append(["GRU", gru_acc, gru_f1, gru_auc, gru_time])
+    # torch.save(gru.state_dict(), f"{'global' if not region_name else region_name.lower()}_gru.pth")
     
     # Print results table
     print(f"\n{'='*70}")

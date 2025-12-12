@@ -7,9 +7,18 @@ from preprocess import get_data_loaders
 
 # Configuration
 DATA_PATH = 'data/weatherAUS.csv'
-LSTM_MODEL_PATH = 'Global_LSTM_best.pth'
-GRU_MODEL_PATH = 'Global_GRU_best.pth'
+# LSTM_MODEL_PATH = 'Global_LSTM_best.pth'
+# GRU_MODEL_PATH = 'Global_GRU_best.pth'
 ANN_MODEL_PATH = 'Global_ANN_best.pth'
+# Coastal_LSTM_MODEL_PATH = 'Coastal_LSTM_best.pth'
+# Coastal_GRU_MODEL_PATH = 'Coastal_GRU_best.pth'
+Coastal_ANN_MODEL_PATH = 'Coastal_ANN_best.pth'
+# Inland_LSTM_MODEL_PATH = 'Inland_LSTM_best.pth'
+# Inland_GRU_MODEL_PATH = 'Inland_GRU_best.pth'
+Inland_ANN_MODEL_PATH = 'Inland_ANN_best.pth'
+
+
+
 
 COASTAL_CITIES = ['Sydney', 'CoffsHarbour', 'Wollongong', 'GoldCoast', 'Cairns']
 INLAND_CITIES = ['AliceSprings', 'Moree', 'Woomera', 'Uluru']
@@ -21,24 +30,37 @@ def run_shap_analysis(region_name, cities, model_type='LSTM'):
     train_dl, test_dl, _, features = get_data_loaders(DATA_PATH, region_filter=cities)
     input_dim = len(features)
     
-    # 2. Load Model
+    # 2. Select appropriate model path
+    model_paths = {
+        # 'Global': {'LSTM': LSTM_MODEL_PATH, 'GRU': GRU_MODEL_PATH, 'ANN': ANN_MODEL_PATH},
+        # 'Coastal': {'LSTM': Coastal_LSTM_MODEL_PATH, 'GRU': Coastal_GRU_MODEL_PATH, 'ANN': Coastal_ANN_MODEL_PATH},
+        # 'Inland': {'LSTM': Inland_LSTM_MODEL_PATH, 'GRU': Inland_GRU_MODEL_PATH, 'ANN': Inland_ANN_MODEL_PATH}
+        
+        'Global': {'ANN': ANN_MODEL_PATH},
+        'Coastal': {'ANN': Coastal_ANN_MODEL_PATH},
+        'Inland': {'ANN': Inland_ANN_MODEL_PATH}
+
+    }
+    model_path = model_paths[region_name][model_type]
+    
+    # 3. Load Model
     if model_type == 'LSTM':
         model = RainLSTM(input_dim=input_dim)
-        model.load_state_dict(torch.load(LSTM_MODEL_PATH))
+        model.load_state_dict(torch.load(model_path))
     elif model_type == 'GRU':
         model = RainGRU(input_dim=input_dim)
-        model.load_state_dict(torch.load(GRU_MODEL_PATH))
+        model.load_state_dict(torch.load(model_path))
     elif model_type == 'ANN':
         model = RainANN(input_dim=input_dim, seq_length=14)
-        model.load_state_dict(torch.load(ANN_MODEL_PATH))
+        model.load_state_dict(torch.load(model_path))
     else:
         raise ValueError(f"Unknown model_type: {model_type}")
     
     model.eval()
     
     # 3. Prepare Data
-    background_data = next(iter(train_dl))[0][:100]
-    test_data = next(iter(test_dl))[0][:50]
+    background_data = next(iter(train_dl))[0][:]
+    test_data = next(iter(test_dl))[0][:]
     
     # 4. Run SHAP
     explainer = shap.DeepExplainer(model, background_data)
@@ -96,7 +118,7 @@ def compare_models_side_by_side(region_name, cities, models=['ANN', 'LSTM', 'GRU
         print(f"Saved: shap_{region_name}_{res['type']}.png")
 
 def run_full_analysis():
-    for region_name, cities in [("Coastal", COASTAL_CITIES), ("Inland", INLAND_CITIES)]:
+    for region_name, cities in [("Global", None), ("Coastal", COASTAL_CITIES), ("Inland", INLAND_CITIES)]:
         compare_models_side_by_side(region_name, cities)
 
 if __name__ == "__main__":
