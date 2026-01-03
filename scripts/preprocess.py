@@ -155,7 +155,6 @@ def create_sequences_fixed(df, seq_length=14, train_ratio=0.8, features_to_use=N
     return X_train, y_train, X_test, y_test, scaler, feature_cols
 
 def get_data_loaders(filepath, batch_size=64, region_filter=None):
-    """Returns data loaders with SMOTE applied """
     df = load_and_clean_data(filepath)
     
     # Add location features to FEATURES list

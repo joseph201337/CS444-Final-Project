@@ -7,14 +7,14 @@ from preprocess import get_data_loaders
 
 # Configuration
 DATA_PATH = 'data/weatherAUS.csv'
-# LSTM_MODEL_PATH = 'Global_LSTM_best.pth'
-# GRU_MODEL_PATH = 'Global_GRU_best.pth'
+LSTM_MODEL_PATH = 'Global_LSTM_best.pth'
+GRU_MODEL_PATH = 'Global_GRU_best.pth'
 ANN_MODEL_PATH = 'Global_ANN_best.pth'
-# Coastal_LSTM_MODEL_PATH = 'Coastal_LSTM_best.pth'
-# Coastal_GRU_MODEL_PATH = 'Coastal_GRU_best.pth'
+Coastal_LSTM_MODEL_PATH = 'Coastal_LSTM_best.pth'
+Coastal_GRU_MODEL_PATH = 'Coastal_GRU_best.pth'
 Coastal_ANN_MODEL_PATH = 'Coastal_ANN_best.pth'
-# Inland_LSTM_MODEL_PATH = 'Inland_LSTM_best.pth'
-# Inland_GRU_MODEL_PATH = 'Inland_GRU_best.pth'
+Inland_LSTM_MODEL_PATH = 'Inland_LSTM_best.pth'
+Inland_GRU_MODEL_PATH = 'Inland_GRU_best.pth'
 Inland_ANN_MODEL_PATH = 'Inland_ANN_best.pth'
 
 
@@ -32,13 +32,13 @@ def run_shap_analysis(region_name, cities, model_type='LSTM'):
     
     # 2. Select appropriate model path
     model_paths = {
-        # 'Global': {'LSTM': LSTM_MODEL_PATH, 'GRU': GRU_MODEL_PATH, 'ANN': ANN_MODEL_PATH},
-        # 'Coastal': {'LSTM': Coastal_LSTM_MODEL_PATH, 'GRU': Coastal_GRU_MODEL_PATH, 'ANN': Coastal_ANN_MODEL_PATH},
-        # 'Inland': {'LSTM': Inland_LSTM_MODEL_PATH, 'GRU': Inland_GRU_MODEL_PATH, 'ANN': Inland_ANN_MODEL_PATH}
+        'Global': {'LSTM': LSTM_MODEL_PATH, 'GRU': GRU_MODEL_PATH, 'ANN': ANN_MODEL_PATH},
+        'Coastal': {'LSTM': Coastal_LSTM_MODEL_PATH, 'GRU': Coastal_GRU_MODEL_PATH, 'ANN': Coastal_ANN_MODEL_PATH},
+        'Inland': {'LSTM': Inland_LSTM_MODEL_PATH, 'GRU': Inland_GRU_MODEL_PATH, 'ANN': Inland_ANN_MODEL_PATH}
         
-        'Global': {'ANN': ANN_MODEL_PATH},
-        'Coastal': {'ANN': Coastal_ANN_MODEL_PATH},
-        'Inland': {'ANN': Inland_ANN_MODEL_PATH}
+        # 'Global': {'ANN': ANN_MODEL_PATH},
+        # 'Coastal': {'ANN': Coastal_ANN_MODEL_PATH},
+        # 'Inland': {'ANN': Inland_ANN_MODEL_PATH}
 
     }
     model_path = model_paths[region_name][model_type]
